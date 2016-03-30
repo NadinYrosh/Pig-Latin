@@ -5,12 +5,25 @@ $(document).ready(function() {
 
     var newWord = [];
     var vowels =["a", "e", "i", "o", "u"];
-
+    var quSplit = ["q","u"];
+ // debugger;
     for(i=0; i < word.length; i++){
       var currentLetter = word[i];
-      console.log(currentLetter);
+      // console.log(currentLetter);
       for(j = 0; j < vowels.length; j++){
-        if (currentLetter === vowels[j]){
+        if (word[i] === "u" && word[i-1] === "q") {
+          var pig = word.splice(word[i]-1, (word[i]));
+          console.log(pig);
+          var wordArray = pig.concat(word);
+          wordArray.push("ay");
+
+          var pigWord = wordArray.join("");
+
+          // console.log(pigWord);
+
+        }
+
+       else if (currentLetter === vowels[j]){
           var pig = word.splice(i, (word.length -1));
           var wordArray = pig.concat(word);
           wordArray.push("ay");
@@ -18,35 +31,10 @@ $(document).ready(function() {
           var pigWord = wordArray.join("");
 
           console.log(pigWord);
+
+          $("#result").text(pigWord);
         }
       }
     }
-    // for(var firstVowel = 0; firstVowel < vowels.length; firstVowel++) {
-    //
-    //
-    //
-    //
-    // }
-    // for(var i = 0; i < vowels.length; i++) {
-    //   // console.log("hi")
-    //     for(var x = 0; x < word.length; x++){
-    //       if (word[x] === vowels[i]) {
-    //         // console.log("hello")
-    //         for (var y = x; y === word.length; y++) {
-    //           newWord = newWord + word[y];
-    //         }
-    //     for (var z = 0; z < x; z++) {
-    //       newWord = newWord + word[z];
-    //     }
-    //     // console.log("yay")
-    //
-    //     newWord.concat("ay");
-    //
-    //   $("#result").append(newWord);
-    //     }
-    //   }
-    // }
-
-
   });
 });
